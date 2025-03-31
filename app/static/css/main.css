@@ -219,7 +219,7 @@ body {
 .profile-hover {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 117%;
   right: 0;
   background-color: white;
   z-index: 1000;
