@@ -12,4 +12,17 @@ document.addEventListener("DOMContentLoaded", function () {
       themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
     }
   });
+
+  const profile = document.getElementById("profile");
+  const profileHover = document.getElementById("profile-hover");
+
+  profile.addEventListener("click", (event) => {
+    event.stopPropagation(); // Prevent click from propagating to the document
+    const isVisible = profileHover.style.display === "block";
+    profileHover.style.display = isVisible ? "none" : "block";
+  });
+
+  document.addEventListener("click", () => {
+    profileHover.style.display = "none"; // Hide when clicking outside
+  });
 });
