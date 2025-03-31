@@ -5,7 +5,7 @@
   font-family: Arial, sans-serif;
 }
 
-body.dark-mode {
+.dark-mode body {
   background-color: #2f2f2f;
   color: #ccc;
 }
@@ -221,12 +221,19 @@ body {
   position: absolute;
   top: 100%;
   right: 0;
+  background-color: white;
   z-index: 1000;
   padding: 10px;
   border-radius: 10px;
+  color: #2f2f2f;
 }
 
-.btn-logout {
+.dark-mode .profile-hover {
+  background-color: black;
+  color: #ccc;
+}
+
+.profile-hover .btn-logout {
   background-color: #dc3545;
   margin-top: 20px;
 }
