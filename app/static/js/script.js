@@ -16,16 +16,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const profile = document.getElementById("profile");
   const profileHover = document.getElementById("profile-hover");
 
-  if (profile && profileHover) {
-    profile.addEventListener("click", (event) => {
-      event.stopPropagation(); // Prevent click from propagating to the document
-      const isVisible =
-        window.getComputedStyle(profileHover).display === "block";
-      profileHover.style.display = isVisible ? "none" : "block";
-    });
+  profile.addEventListener("click", (event) => {
+    event.stopPropagation(); // Prevent click from propagating to the document
+    const isVisible = window.getComputedStyle(profileHover).display === "block";
+    profileHover.style.display = isVisible ? "none" : "block";
+  });
 
-    document.addEventListener("click", () => {
-      profileHover.style.display = "none"; // Hide when clicking outside
-    });
-  }
+  document.addEventListener("click", () => {
+    profileHover.style.display = "none"; // Hide when clicking outside
+  });
 });
