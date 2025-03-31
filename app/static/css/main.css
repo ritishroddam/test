@@ -14,6 +14,56 @@ body {
   display: flex;
 }
 
+.profile {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-hover {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000;
+  width: 200px;
+}
+
+.profile:hover .profile-hover {
+  display: block;
+}
+
+.dashboard-container h2 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.dashboard-container .user-info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.btn-logout {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-logout:hover {
+  background-color: #d32f2f;
+}
+
 .sidebar {
   position: fixed;
   left: 1%;

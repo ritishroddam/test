@@ -1,10 +1,11 @@
 from flask import Flask, redirect, url_for, flash
-from flask_jwt_extended import JWTManager, get_jwt
+from flask_jwt_extended import JWTManager, get_jwt, get_jwt_identity, verify_jwt_in_request
 from pymongo import MongoClient
 from config import config
 from flask_socketio import SocketIO
 import threading
 import signal
+
 
 jwt = JWTManager()
 mongo_client = None
@@ -33,6 +34,26 @@ def create_app(config_name='default'):
             return dict(csrf_token=jwt_data.get("csrf"))
         except:
             return dict(csrf_token=None)
+        
+    @app.context_processor
+    def inject_user():
+        try:
+            from app.models import User
+            verify_jwt_in_request(optional=True)
+            current_user = get_jwt_identity()
+            claims = get_jwt()
+            user_id = claims['user_id']
+            user = User.get_user_by_id(user_id)
+            return {
+                'username': current_user,
+                'role': user['role']
+            }
+        except Exception:
+            # If no JWT or an error occurs, return default values
+            return {
+                'username': 'Guest',
+                'role': 'N/A'
+            }
         
     @jwt.unauthorized_loader
     def custom_unauthorized_response(callback):

@@ -2,16 +2,16 @@
 
 {% block content %}
 <div class="dashboard-container">
-    <h2>Welcome to your Dashboard, {{ username }}!</h2>
+    <h2>Hello, {{ username }}!</h2>
     <div class="user-info">
         <p><strong>Role:</strong> {{ role }}</p>
     </div>
 
-    {% if role == 'admin' %}
-    <div class="admin-links">
+    <!-- {% if role == 'admin' %} -->
+    <!-- <div class="admin-links">
         <a href="{{ url_for('main.admin_dashboard') }}" class="btn">Admin Dashboard</a>
-    </div>
-    {% endif %}
+    </div> -->
+    <!-- {% endif %} -->
 
     <form action="{{ url_for('auth.logout') }}" method="POST">
         {% if csrf_token %}
