@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash, jsonify
-from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, set_access_cookies, unset_jwt_cookies
+from flask_jwt_extended import verify_jwt_in_request, create_access_token, jwt_required, get_jwt_identity, set_access_cookies, unset_jwt_cookies
 from .models import User
 from .utils import roles_required
 import datetime
@@ -8,9 +8,11 @@ auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
-
-    if get_jwt_identity():
+    try:
+        verify_jwt_in_request()
         return redirect(url_for('Vehicle.map'))
+    except:
+        pass
 
     if request.method == 'POST':
         username = request.form.get('username')
