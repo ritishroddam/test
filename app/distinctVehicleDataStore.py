@@ -67,8 +67,7 @@ def emit_data(socketio, json_data):
             json_data['LicensePlateNumber'] = 'Unknown'
 
         # Emit the data using Flask-SocketIO
-        socketio.emit('vehicle_update', json_data)  # Removed 'broadcast=True'
-        print(f"Emitted data for IMEI {json_data['imei']}")
+        socketio.emit('vehicle_update', json_data)  # Removed 'broadcast=True'  
 
     except Exception as e:
         print(f"Error emitting data: {str(e)}")
