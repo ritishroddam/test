@@ -17,11 +17,17 @@ if __name__ == '__main__':
         print("Generating self-signed certificates...")
         os.system(f'openssl req -x509 -newkey rsa:4096 -nodes -out {cert_path} -keyout {key_path} -days 365 -subj "/CN=localhost"')
     
-    # Run the app with HTTPS
-    socketio.run(
-        app,
-        ssl_context=(cert_path, key_path),
-        debug=True,
-        host='0.0.0.0',
-        port=5000
+    # Configure SSL for Eventlet
+    ssl_context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+    ssl_context.load_cert_chain(certfile=cert_path, keyfile=key_path)
+    
+    # Wrap the Eventlet socket with SSL
+    wrapped_socket = eventlet.wrap_ssl(
+        eventlet.listen(('0.0.0.0', 5000)),
+        certfile=cert_path,
+        keyfile=key_path,
+        server_side=True
     )
+    
+    # Run the app with Eventlet and SSL
+    eventlet.wsgi.server(wrapped_socket, app)
