@@ -1,5 +1,7 @@
 from app import create_app, socketio
 import os
+import eventlet
+import ssl
 
 app = create_app()
 
@@ -21,5 +23,5 @@ if __name__ == '__main__':
         ssl_context=(cert_path, key_path),
         debug=True,
         host='0.0.0.0',
-        port=8888
+        port=5000
     )
