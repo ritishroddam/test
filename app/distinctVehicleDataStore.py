@@ -1,5 +1,5 @@
 from datetime import datetime
-import time
+import eventlet
 from app import db  # Use the Flask app's database instance
 
 atlanta_collection = db['atlanta']
@@ -75,4 +75,4 @@ def emit_data(socketio, json_data):
 def run_distinct_vehicle_data_store(socketio):
     while True:
         update_distinct_atlanta(socketio)
-        time.sleep(60)  # Wait for 60 seconds before running the function again
+        eventlet.sleep(120)  # Wait for 60 seconds before running the function again
