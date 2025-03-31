@@ -57,12 +57,12 @@ def create_app(config_name='default'):
         distinctVehicleThread = threading.Thread(target=run_distinct_vehicle_data_store, args=(socketio,), daemon=True)
         distinctVehicleThread.start()
 
-        # from app.map_server import run_servers, signal_handler
-        # mapServerThread = threading.Thread(target=run_servers, daemon=True)
-        # mapServerThread.start()
+        from app.map_server import run_servers, signal_handler
+        mapServerThread = threading.Thread(target=run_servers, daemon=True)
+        mapServerThread.start()
 
-        # signal.signal(signal.SIGINT, signal_handler)
-        # signal.signal(signal.SIGTERM, signal_handler)
+        signal.signal(signal.SIGINT, signal_handler)
+        signal.signal(signal.SIGTERM, signal_handler)
 
     start_background_task()
     
