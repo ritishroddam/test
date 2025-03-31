@@ -44,9 +44,23 @@ def create_app(config_name='default'):
 
     from app.Vehicle.VehicleBackend import vehicle_bp
     from app.Dashboard.DashboardBackend import dashboard_bp
+    from app.CompanyDetails.companyBackend import company_bp
+    from app.DeviceInvy.DeviceBackend import device_bp
+    from app.Reports.allReports import reports_bp
+    from app.RouteHistory.routeBackend import route_bp
+    from app.SimInvy.SimBackend import sim_bp
+    from app.VehicleDetails.vehicleDetails import vehicleDetails_bp
 
     app.register_blueprint(vehicle_bp, url_prefix='/vehicle')
     app.register_blueprint(dashboard_bp, url_prefix='/dashboard')
+    app.register_blueprint(company_bp, url_prefix='/companyDetails')
+    app.register_blueprint(device_bp, url_prefix='/deviceInvy')
+    app.register_blueprint(reports_bp, url_prefix='/reports')
+    app.register_blueprint(route_bp, url_prefix='/routeHistory')
+    app.register_blueprint(sim_bp, url_prefix='/simInvy')
+    app.register_blueprint(vehicleDetails_bp, url_prefix='/vehicleDetails')
+
+
     app.register_blueprint(auth_bp)
     app.register_blueprint(main_bp)
 
