@@ -8,6 +8,10 @@ auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
+
+    if get_jwt_identity():
+        return redirect(url_for('Vehicle.map'))
+
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
