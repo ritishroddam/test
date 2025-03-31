@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   profile.addEventListener("click", (event) => {
     event.stopPropagation(); // Prevent click from propagating to the document
-    const isVisible = profileHover.style.display === "block";
+    const isVisible = window.getComputedStyle(profileHover).display === "block";
     profileHover.style.display = isVisible ? "none" : "block";
   });
 
