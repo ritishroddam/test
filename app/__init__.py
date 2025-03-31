@@ -64,6 +64,10 @@ def create_app(config_name='default'):
         signal.signal(signal.SIGINT, signal_handler)
         signal.signal(signal.SIGTERM, signal_handler)
 
+        from app.calculate_past_distances import calculate_distance_for_past_days
+        pastDistanceThread = threading.Thread(target=calculate_distance_for_past_days, daemon=True)
+        pastDistanceThread.start()
+
     start_background_task()
     
     return app
