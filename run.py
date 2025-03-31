@@ -17,6 +17,7 @@ if __name__ == '__main__':
     
     # Run the app with HTTPS
     socketio.run(
+        app,
         ssl_context=(cert_path, key_path),
         debug=True,
         host='0.0.0.0',
