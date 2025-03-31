@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('Dashboard.static', filename='css/dashboard.css') }}">
+<script defer src="{{ url_for('Dashboard.static', filename='js/dashboard.js') }}" defer></script>
+
+<link rel="stylesheet"
+  href="{{ url_for('Dashboard.static', filename='font/ethnocentric-cdnfonts/ethnocentricrg.ttf') }}" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- <script src="{{ url_for('Dashboard.static', filename='js/preloader.js') }}" defer></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEFA1-1dlca1C2BbUNKpQEf-icQAJAfX0&callback=initMap" async
+  defer></script>
+
+{% endblock %}
+
+{% block h1 %}
+Dashboard
+{% endblock %}
+
+{% block block_container %}
+<section class="dashboard">
+  <div class="cards">
+    <div class="card" id="card1">
+      <div class="card-content">
+        <h3>Number of Devices</h3>
+        <p>Number of Devices</p>
+      </div>
+    </div>
+    <div class="card" id="card2">
+      <div class="card-content">
+        <h3>Number of Sim</h3>
+        <p>Number of Sim</p>
+      </div>
+    </div>
+    <div class="card" id="card3">
+      <div class="card-content">
+        <h3>Number of Customers</h3>
+        <p>Number of Customers</p>
+      </div>
+    </div>
+    <div class="card" id="card4">
+      <div class="card-content">
+        <h3>Number of Employees</h3>
+        <p>Number of Employee</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ...existing code... -->
+  <div class="status-container">
+    <div class="status-card" id="running-vehicles">
+      <i class="fa fa-car"></i>
+      <span>Running Vehicles</span>
+      <span class="status-count" id="running-vehicles-count">0 / 0</span>
+    </div>
+    <div class="status-card" id="idle-vehicles">
+      <i class="fa-solid fa-hourglass-half"></i>
+      <span>Idle Vehicles</span>
+      <span class="status-count" id="idle-vehicles-count">0 / 0</span>
+    </div>
+    <div class="status-card" id="parked-vehicles">
+      <i class="fa fa-parking"></i>
+      <span>Parked Vehicles</span>
+      <span class="status-count" id="parked-vehicles-count">0 / 0</span>
+    </div>
+    <div class="status-card" id="speed-vehicles">
+      <i class="fa-solid fa-gauge"></i>
+      <span>Speed Vehicles (40+)</span>
+      <span class="status-count" id="speed-vehicles-count">0 / 0</span>
+    </div>
+    <div class="status-card" id="overspeed-vehicles">
+      <i class="fa-solid fa-gauge-high"></i>
+      <span>Over Speed Vehicles (60+)</span>
+      <span class="status-count" id="overspeed-vehicles-count">0 / 0</span>
+    </div>
+    <div class="status-card" id="disconnected-vehicles">
+      <i class="fa-solid fa-plug-circle-xmark"></i>
+      <span>Disconnected Vehicles</span>
+      <span class="status-count" id="disconnected-vehicles-count">0 / 0</span>
+    </div>
+    <div class="status-card" id="gps-vehicles">
+      <i class="fa-solid fa-exclamation"></i>
+      <span>No GPS Vehicles</span>
+      <span class="status-count" id="no-gps-vehicles-count">0 / 0</span>
+    </div>
+  </div>
+
+  <div class="title-with-line">
+    <span>Information</span>
+    <hr>
+  </div>
+
+  <div class="dashboard-row">
+    <!-- Graph Container -->
+    <div class="graph-container">
+      <canvas id="vehiclesChart"></canvas>
+    </div>
+
+    <!-- Traffic Container -->
+    <div class="traffic-container" id="traffic-container">
+      <h3>Live Traffic Updates</h3>
+      <div id="map"></div>
+    </div>
+
+    <!-- Weather Section -->
+    <div class="weather-section">
+      <div class="weather-container">
+        <h1>Weather</h1>
+        <div id="weather">
+          <p>Loading weather...</p>
+        </div>
+      </div>
+      <div class="datetime-container">
+        <div id="clock"></div>
+        <div id="date"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="title-with-line">
+    <span>Vehicle Data</span>
+    <hr>
+  </div>
+  <div id="vehicleSetion" class="dashboard-row">
+    <div class="card-chart">
+      <canvas id="devicesChart"></canvas>
+    </div>
+
+    <div class="vehicleLiveTable">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Vehicle</th>
+            <th>Distance Travelled (km) <button id="sortBtn">↓</button></th>
+          </tr>
+        </thead>
+        <tbody id="vehicleTable">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  </div>
+</section>
+{% endblock %}

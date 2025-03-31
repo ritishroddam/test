@@ -1,0 +1,476 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+.cards {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+.cards #card1 {
+  background-color: #283747;
+}
+.cards #card2 {
+  background-color: #2e4053;
+}
+.cards #card3 {
+  background-color: #34495e;
+}
+.cards #card4 {
+  background-color: #5d6d7e;
+}
+
+.dark-mode .cards #card1 {
+  background-color: #85929e;
+}
+.dark-mode .cards #card2 {
+  background-color: #5d6d7e;
+}
+.dark-mode .cards #card3 {
+  background-color: #34495e;
+}
+.dark-mode .cards #card4 {
+  background-color: #2e4053;
+}
+
+.card {
+  background-color: #2a2d37;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+  transition: background-color 0.3s, transform 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  background-color: #3a3d47;
+}
+.card-content {
+  margin-bottom: 20px;
+}
+.card h3 {
+  margin: 0;
+  color: #fff;
+}
+.traffic {
+  margin-top: 40px;
+}
+.traffic h3 {
+  margin: 0;
+}
+.graph {
+  background-color: #2a2d37;
+  height: 30px;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 20px;
+}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .cards {
+    flex-direction: column;
+  }
+  .card {
+    margin-bottom: 20px;
+  }
+}
+.dashboard-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.graph-container,
+.traffic-container,
+.weather-section,
+.vehicleSetion {
+  flex: 1;
+  margin: 0 10px;
+}
+.traffic {
+  width: 90%;
+}
+.weather-section {
+  margin-top: 20px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.datetime-container,
+.weather-container {
+  margin-right: 10px;
+  width: 60%;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  transition: background 0.5s ease;
+}
+
+.dark-mode .datetime-container,
+.dark-mode .weather-container {
+  background-color: black;
+  box-shadow: 0px 0px 10px #cccccc90;
+}
+
+.traffic-container {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #ccc;
+}
+
+.dark-mode .traffic-container {
+  background-color: black;
+  box-shadow: 0px 0px 10px #cccccc90;
+}
+
+#traffic-container h3 {
+  margin: 0;
+  padding: 10px;
+  background-color: white;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-size: 1.5em;
+  color: #2f2f2f;
+}
+
+.dark-mode #traffic-container h3 {
+  color: #ccc;
+  background-color: black;
+  box-shadow: 0px 0px 10px #cccccc90;
+}
+
+#traffic-status {
+  color: #2f2f2f;
+}
+
+.dark-mode #traffic-status {
+  color: #ccc;
+}
+
+#map {
+  width: 100%;
+  height: 400px;
+  transition: filter 0.3s ease-in-out;
+}
+
+#scrolling-text {
+  position: absolute;
+  white-space: nowrap;
+  animation: scroll 10s linear infinite;
+  font-size: 1em;
+  color: #000;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.graph-title {
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 10px;
+  position: relative;
+}
+.graph-container {
+  flex: 1;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 450px;
+  color: #2f2f2f;
+  font-family: Arial, sans-serif;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 10px;
+  color: #2f2f2f;
+}
+
+.dark-mode canvas {
+  color: #ccc;
+}
+
+p {
+  color: #fff;
+}
+
+.dark-mode .graph-container {
+  color: #ccc;
+  background-color: black;
+  box-shadow: 0px 0px 10px #cccccc90;
+}
+
+.dark-mode .graph-container #vehiclesChart {
+  color: #ccc;
+  background-color: black;
+}
+
+.dark-mode #traffic-container {
+  color: #ccc;
+  background-color: black;
+  box-shadow: 0px 0px 10px #cccccc90;
+}
+
+.dark-mode #weather p {
+  color: #ccc;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px #fc0, 0 0 30px #fc0;
+  }
+  50% {
+    box-shadow: 0 0 40px gold, 0 0 60px gold;
+  }
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+#vehiclesChart {
+  display: block;
+  margin: auto;
+}
+
+.title-with-line {
+  display: flex;
+  align-items: center; /* Align text and line in the center */
+  gap: 10px; /* Space between text and line */
+  padding: 15px;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+.title-with-line hr {
+  flex-grow: 1; /* Makes the line take up remaining space */
+  border: none;
+  height: 1px;
+  background-color: #2f2f2f; /* Adjust the color as needed */
+}
+
+.dark-mode .title-with-line hr {
+  background-color: #ccc;
+}
+
+.dark-mode {
+  color: #ccc;
+}
+
+#vehicleSetion {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.card-chart {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .card-chart {
+  box-shadow: 0px 0px 10px #cccccc90;
+}
+
+.vehicleLiveTable {
+  flex: 1;
+  min-width: 45%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  height: 332px;
+  overflow-y: auto;
+}
+
+.dark-mode .vehicleLiveTable {
+  color: #ccc;
+  background-color: black;
+  box-shadow: 0px 0px 10px #cccccc90;
+}
+
+.vehicleLiveTable table {
+  width: 100%;
+  border-collapse: separate; /* Change from collapse to separate */
+  border-spacing: 0 5px; /* Adds space between rows */
+  color: #555;
+}
+
+.dark-mode .vehicleLiveTable table {
+  color: #ccc;
+  background-color: black;
+  box-shadow: 0px 0px 10px #cccccc90;
+}
+
+.vehicleLiveTable th,
+.vehicleLiveTable td {
+  text-align: center;
+  padding: 10px; /* Adds more padding for better readability */
+  border-bottom: 0.5px solid #ddd;
+  font-weight: 100;
+  letter-spacing: 1px;
+  color: #555;
+}
+
+.dark-mode .vehicleLiveTable td {
+  color: #ccc;
+  background-color: black;
+}
+
+.vehicleLiveTable th {
+  background-color: #2f2f2f;
+  color: #ccc;
+  text-transform: uppercase;
+  padding: 10px; /* Adjust padding for better alignment */
+  vertical-align: middle; /* Centers text vertically */
+}
+
+.dark-mode .vehicleLiveTable th {
+  background-color: #ccc;
+  color: #2f2f2f;
+}
+
+.vehicleLiveTable tbody tr {
+  background-color: white;
+  border-radius: 5px; /* Optional rounded corners for neat look */
+}
+
+.vehicleLiveTable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.vehicleLiveTable tbody tr:hover {
+  background-color: #f1f1f1;
+  transition: all 0.2s ease;
+}
+
+.table-container {
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+#sortBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+}
+
+.dark-mode #sortBtn {
+  color: black;
+}
+
+.card-chart,
+.vehicleLiveTable {
+  flex: 1;
+  min-width: 45%;
+}
+
+/* //////////////////////////////////// */
+
+.status-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.status-card {
+  flex: 1;
+  min-width: 150px;
+  margin: 10px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.dark-mode .status-card {
+  background-color: black;
+  box-shadow: 0px 0px 10px #cccccc90;
+  color: #ccc;
+}
+
+.status-card i {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.status-card span {
+  display: block;
+  font-size: 16px;
+}
+
+.status-count {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
